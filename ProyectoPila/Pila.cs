@@ -49,7 +49,7 @@ namespace ProyectoPila
                 NODO nuevo = new NODO(num);
                 inicio = nuevo;
                 inicio = inicio.Sig;
-                    //La pila tiene espacio
+                //La pila tiene espacio
             }
             return false;//La pila está llena
         }
@@ -64,20 +64,11 @@ namespace ProyectoPila
         }
         public void PrintStack()
         {
-            NODO act;
-            act = inicio;
-            while (act != null)
+            NODO o;
+            while (inicio != null)
             {
-                Console.Write($"{act.Valor} => ");
-                if (act.Sig != null)
-                {
-                    act = act.Sig;
-                }
-                else
-                {
-                    act = act.Sig;
-                    Console.Write("NULL");
-                }
+                Console.Write($"{o.Valor} => ");
+                o.Sig;
                 //Imprime la lista
             }
         }
