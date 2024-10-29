@@ -4,12 +4,14 @@
     {
         static void Main(string[] args)
         {
-            bool a = true;
-            
-            while (a != false)
+            bool p = true;
+            int n = 0;
+            while (p != false)
             {
                 try
                 {
+                    
+                    Pila a = new Pila(n);
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.Clear();
                     Console.WindowHeight = 17;
@@ -32,19 +34,36 @@
                     int Opción = int.Parse(Console.ReadLine());
                     switch (Opción)
                     {
-                        case 1:
+                        case 1://TAMAÑO
+                            Console.Write("Escribe el tope de la pila => ");
+                            n = Convert.ToInt32(Console.ReadLine());
+                            Console.Clear();
+                            Console.Write("¡Tamaño de pila ajustado correctamente!");
                             break;
-                        case 2:
+                        case 2://PUSH
+                            Console.Write("Escriba Numero a Insertar => ");
+                            n = Convert.ToInt32(Console.ReadLine());
+                            if (a.Push(n) == false)
+                            {
+                                Console.WriteLine("La pila está llena");
+                            } 
+                            else if(a.Push(n) == true)
+                            {
+                                Console.WriteLine("Numero Insertado Correctamente");
+                            } 
                             break;
-                        case 3:
+                        case 3://POP
                             break;
-                        case 4:
+                        case 4://IMPRIMIR
+                            Console.Clear();
+                            a.PrintStack();
+                            Console.ReadKey();
                             break;
-                        case 5:
+                        case 5://SALIR
                             Console.WindowHeight = 10;
                             Console.WindowWidth = 60;
                             Console.Clear();
-                            a = false;
+                            p = false;
                             break;
                     }
                 }catch(Exception e)

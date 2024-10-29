@@ -17,6 +17,10 @@ namespace ProyectoPila
             this.MAX = MAX;
             inicio = null;
         }
+        public void Tope(int n)
+        {
+            tope = n;
+        }
         public bool Empty()
         {
             if(inicio == null)
@@ -42,13 +46,12 @@ namespace ProyectoPila
         {
             if ( !Full() )
             {
-                a.Push(num);
-                return true; //La pila tiene espacio
+                NODO nuevo = new NODO(num);
+                inicio = nuevo;
+                inicio = inicio.Sig;
+                    //La pila tiene espacio
             }
-            else
-            {
-                return false; //La pila está llena
-            }
+            return false;//La pila está llena
         }
         public int Pop()
         {
@@ -61,7 +64,22 @@ namespace ProyectoPila
         }
         public void PrintStack()
         {
-            //Imprime la lista
+            NODO act;
+            act = inicio;
+            while (act != null)
+            {
+                Console.Write($"{act.Valor} => ");
+                if (act.Sig != null)
+                {
+                    act = act.Sig;
+                }
+                else
+                {
+                    act = act.Sig;
+                    Console.Write("NULL");
+                }
+                //Imprime la lista
+            }
         }
     }// https://www.netmentor.es/entrada/tipo-stack
 }
