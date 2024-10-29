@@ -8,20 +8,20 @@ namespace ProyectoPila
 {
     internal class Pila
     {
-        private int MAX;
-        private int tope = 0;
+        private int MAX; //Numero Maximo redundante al haber tope, pudiendose llamar nivel
+        private int tope = 0; //Este es el nivel
         private NODO inicio;
-        Stack<int> a = new Stack<int>();
+        //Stack<int> a = new Stack<int>();
         public Pila(int MAX)
         {
             this.MAX = MAX;
             inicio = null;
         }
-        public void Tope(int n)
+        public void Tope(int n) //un extra para poder cambiar el tamaño de la lista
         {
-            tope = n;
+            MAX = n;
         }
-        public bool Empty()
+        public bool Empty() //Si está vacio es true
         {
             if(inicio == null)
             {
@@ -32,44 +32,54 @@ namespace ProyectoPila
                 return false;
             }
         }
-        public bool Full()
+        public bool Full() //si está lleno es true
         {
             if(tope == MAX)
             {
-                return true;
+                return true; //Está lleno
             } else
             { 
-                return false; 
+                return false; //Está vacio
             }
         }
-        public bool Push(int num)
+        public bool Push(int num) //Mete la pila
         {
-            if ( !Full() )
+            if (!Full())
             {
                 NODO nuevo = new NODO(num);
+                nuevo.Sig = inicio;
                 inicio = nuevo;
+                tope++; 
+                return true;// La pila está vacia
+            }
+            return false; // La pila está llena
+        }
+        public int Pop() //Elimina la pila
+        {
+            if (!Empty())
+            {
+                int v = inicio.Valor;
                 inicio = inicio.Sig;
-                //La pila tiene espacio
+                tope--;
+                return v;
             }
-            return false;//La pila está llena
+            return -1;
         }
-        public int Pop()
+        public void PrintStack() //Imprime la pila
         {
-            if ( !Empty() )
+            if (inicio == null)
             {
-                return tope;
+                Console.WriteLine("La pila está vacía");
             }
-            return tope;
-            //Regresa el numero sacado de la pila y si está vacía regresa -1
-        }
-        public void PrintStack()
-        {
-            NODO o;
-            while (inicio != null)
+            else
             {
-                Console.Write($"{o.Valor} => ");
-                o.Sig;
-                //Imprime la lista
+                NODO act = inicio;
+                while (act != null)
+                {
+                    Console.Write($"{act.Valor} => ");
+                    act = act.Sig;
+                }
+                Console.WriteLine("NULL"); 
             }
         }
     }// https://www.netmentor.es/entrada/tipo-stack
