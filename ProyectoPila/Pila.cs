@@ -73,13 +73,14 @@ namespace ProyectoPila
             }
             else
             {
+                Console.Write("Base => ");
                 NODO act = inicio;
                 while (act != null)
                 {
                     Console.Write($"{act.Valor} => ");
                     act = act.Sig;
                 }
-                Console.WriteLine("NULL"); 
+                Console.WriteLine("Inicio"); 
             }
         }
     }// https://www.netmentor.es/entrada/tipo-stack
