@@ -65,7 +65,7 @@
                             int r = a.Pop();
                             if (r != -1)
                             {
-                                Console.WriteLine($"Número {a.Pop()} Extraído Correctamente");
+                                Console.WriteLine($"Número {r} Extraído Correctamente");
                             }
                             else
                             {
